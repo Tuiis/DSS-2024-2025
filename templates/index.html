@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container py-5">
+    <h1 class="text-center mb-4">💼 Πρόβλεψη Ακύρωσης Κράτησης</h1>
+    <form method="post">
+        <div class="row mb-3">
+            <div class="col">
+                <label for="adults" class="form-label">Αριθμός Ενηλίκων</label>
+                <input type="number" class="form-control" name="adults" required>
+            </div>
+            <div class="col">
+                <label for="weekend_nights" class="form-label">Διανυκτερεύσεις Σαββατοκύριακου</label>
+                <input type="number" class="form-control" name="weekend_nights" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="meal" class="form-label">Τύπος Γεύματος</label>
+            <select class="form-select" name="meal" required>
+                <option value="Meal Plan 1">Meal Plan 1</option>
+                <option value="Meal Plan 2">Meal Plan 2</option>
+                <option value="Meal Plan 3">Meal Plan 3</option>
+                <option value="Not Selected">Not Selected</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="room" class="form-label">Τύπος Δωματίου</label>
+            <select class="form-select" name="room" required>
+                <option value="Room_Type 1">Room Type 1</option>
+                <option value="Room_Type 2">Room Type 2</option>
+                <option value="Room_Type 3">Room Type 3</option>
+                <option value="Room_Type 4">Room Type 4</option>
+                <option value="Room_Type 5">Room Type 5</option>
+                <option value="Room_Type 6">Room Type 6</option>
+                <option value="Room_Type 7">Room Type 7</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="price" class="form-label">Μέση Τιμή (€)</label>
+            <input type="number" class="form-control" name="price" required step="0.01">
+        </div>
+
+        <div class="mb-3">
+            <label for="lead_time" class="form-label">Χρόνος έως Check-in (σε ημέρες)</label>
+            <input type="number" class="form-control" name="lead_time" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="special_requests" class="form-label">Ειδικά Αιτήματα</label>
+            <input type="number" class="form-control" name="special_requests" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="market_segment_type" class="form-label">Τύπος Αγοράς</label>
+            <select class="form-select" name="market_segment_type" required>
+                <option value="Corporate">Corporate</option>
+                <option value="Complementary">Complementary</option>
+                <option value="Online">Online</option>
+                <option value="Offline">Offline</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="car_parking_space" class="form-label">Θέσεις Parking</label>
+            <input type="number" class="form-control" name="car_parking_space" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="number_of_week_nights" class="form-label">Διανυκτερεύσεις Εβδομάδας</label>
+            <input type="number" class="form-control" name="number_of_week_nights" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="p_not_c" class="form-label">p-not-c (0 ή 1)</label>
+            <input type="number" class="form-control" name="p_not_c" min="0" max="1" required>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">🔍 Υποβολή</button>
+        </div>
+    </form>
+
+    {% if result is not none %}
+    <div class="alert {{ 'alert-danger' if result == 'Canceled' else 'alert-success' }} text-center mt-4">
+        📊 Αποτέλεσμα Μοντέλου: <strong>{{ result }}</strong>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
